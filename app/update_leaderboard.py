@@ -70,6 +70,8 @@ def fetch_leaderboard():
 
     print(df.to_string(index=False))
 
+    df.to_json(r'data/leaderboard.json')
+
     return df
 
 

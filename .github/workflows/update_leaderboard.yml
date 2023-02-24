@@ -1,0 +1,34 @@
+name: Update Leaderboard
+
+on:
+  schedule:
+    - cron: '55 8 * * 0-4'  # Run at 8:55 am Central Time Sunday through Thursday
+    - cron: '55 16 * * 5-6'  # Run at 4:55 pm Eastern Time on Friday and Saturday
+
+jobs:
+  update_database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Update database
+        run: python app/update_database.py
+      - name: Update website
+        run: python app/update_website.py
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: Avinash Gupta
+          author_email: aviguptatx@gmail.com
+          message: "Update website"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
