@@ -8,7 +8,7 @@ def update_website():
     df_sorted = df.T.sort_values(by='avg_rank')
     html = open("index.html", "w")
     html.write(df_sorted.to_html(index=True))
-    html.write("Last updated: " + datetime.datetime.now(pytz.timezone('US/Central')).strftime("%I:%M%p on %B %d, %Y"))
+    html.write("\nLast updated: " + datetime.datetime.now(pytz.timezone('US/Central')).strftime("%I:%M%p on %B %d, %Y"))
 
     return df
 
