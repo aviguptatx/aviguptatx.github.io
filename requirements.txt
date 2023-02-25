@@ -2,3 +2,4 @@ beautifulsoup4==4.11.2
 pandas==1.5.3
 pytz==2022.7.1
 requests==2.28.2
+trueskill==0.4.5

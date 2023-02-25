@@ -1,8 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import json
+import trueskill
 
 def fetch_leaderboard():
+    # pass in cookies and headers for request
+    # yes this isn't super secure but it's good enough
     cookies = {
         'nyt-a': '1Cnj_QdNOQ4lY6fMFyViCV',
         'purr-cache': '<K0<r<C_<G_<S0',
@@ -52,27 +56,67 @@ def fetch_leaderboard():
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36',
     }
 
-    r = requests.get('https://www.nytimes.com/puzzles/leaderboards', cookies=cookies, headers=headers)
+    # load previous data, if it exists
+    f = open('data/leaderboard.json')
+    prev_data = {}
+    try:
+        prev_data = json.load(f)
+    except:
+        pass
 
+    # fetch current daily leaderboard
+    r = requests.get('https://www.nytimes.com/puzzles/leaderboards', cookies=cookies, headers=headers)
     soup = BeautifulSoup(r.text, 'html.parser')
     leaderboard_raw = soup.find('div', {'class': 'lbd-board__items'}).find_all('div', {'class': 'lbd-score'})
 
-    leaderboard = []
-    for item in leaderboard_raw:
-        entry = {
-        'rank': item.find('p', {'class': 'lbd-score__rank'}).text,
-        'name': item.find('p', {'class': 'lbd-score__name'}).text,
-        'time': item.find('p', {'class': 'lbd-score__time'}).text,
-        }
-        leaderboard.append(entry)
+    # new leaderboard dict
+    leaderboard = {}
 
-    df = pd.DataFrame(leaderboard)
+    # iterate through all daily leaderboard entries and update database
+    for rank, item in enumerate(leaderboard_raw, 1):
+        if (item.find('p', {'class': 'lbd-score__time'}).text.strip() == '--'):
+            continue
+        username = item.find('p', {'class': 'lbd-score__name'}).text.strip()
+        time_in_seconds = convert_time_to_seconds(item.find('p', {'class': 'lbd-score__time'}).text.strip())
 
-    print(df.to_string(index=False))
+        if not username in prev_data:  # our current contestant is not in the database
+            avg_rank = rank
+            avg_time = time_in_seconds
+            wins = 1 if rank == 1 else 0
+            num_games = 1
+            # elo_rating = trueskill.MU
+            # sigma = trueskill.SIGMA
+            leaderboard[username] = {'avg_rank': avg_rank,
+                                     'avg_time': avg_time,
+                                     'wins': wins,
+                                     'num_games': num_games}
+        else:  # current contestant is in the database
+            player_data = prev_data[username]
+            prev_num_games = player_data['num_games']
+            avg_rank = (player_data['avg_rank'] * prev_num_games + rank) / (prev_num_games + 1)
+            avg_time = (player_data['avg_time'] * prev_num_games + time_in_seconds) / (prev_num_games + 1)
+            num_games = prev_num_games + 1
+            wins = player_data['wins'] + (1 if rank == 1 else 0)
+            leaderboard[username] = {'avg_rank': avg_rank,
+                                     'avg_time': avg_time,
+                                     'wins': wins,
+                                     'num_games': num_games}
+    
 
-    df.to_json(r'data/leaderboard.json')
+    with open('data/leaderboard.json', 'w') as f:
+        json.dump(leaderboard, f)
 
-    return df
+
+def convert_time_to_seconds(time_str):
+    print(time_str)
+    minutes, seconds = map(int, time_str.split(":"))
+    return minutes * 60 + seconds
+
+
+# def convert_seconds_to_time(duration_in_seconds):
+#     minutes = duration_in_seconds // 60
+#     seconds = duration_in_seconds % 60
+#     return f"{minutes:d}:{seconds:02d}"
 
 
 if __name__ == "__main__":
