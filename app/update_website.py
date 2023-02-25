@@ -6,7 +6,7 @@ import pytz
 
 def update_website():
     df = pd.read_json(r'data/leaderboard.json').T
-    df['avg_time'] = [convert_seconds_to_time(avg_time_in_seconds) for avg_time_in_seconds in df['avg_time']]
+    df['avg_time'] = [convert_seconds_to_time(int(avg_time_in_seconds)) for avg_time_in_seconds in df['avg_time']]
     df_sorted = df.sort_values(by='avg_rank')
 
     html_io_wrapper = open("index.html", "w")
@@ -20,7 +20,7 @@ def update_website():
 def convert_seconds_to_time(duration_in_seconds):
     minutes = duration_in_seconds // 60
     seconds = duration_in_seconds % 60
-    return f"{minutes:d}:{seconds:02d}"
+    return f"{minutes}:{seconds:02d}"
 
 
 def write_to_html_file(df, html_io_wrapper, title='', subtitle=''):
