@@ -4,10 +4,11 @@ import datetime
 def update_website():
     df = pd.read_json(r'data/leaderboard.json')
     
-    df.to_html('index.html')
+    # df.to_html('index.html')
 
-    html = open("index.html", "a")
-    html.write(datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
+    html = open("index.html", "w")
+    html.write(df.to_html(index=False))
+    html.write("Last updated: " + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
 
     return df
 
