@@ -1,5 +1,7 @@
 import pandas as pd
 import datetime
+import pytz
+
 
 def update_website():
     df = pd.read_json(r'data/leaderboard.json')
@@ -8,7 +10,7 @@ def update_website():
 
     html = open("index.html", "w")
     html.write(df.to_html(index=False))
-    html.write("Last updated: " + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y"))
+    html.write("Last updated: " + datetime.datetime.now(pytz.timezone('US/Central')).strftime("%I:%M%p on %B %d, %Y"))
 
     return df
 
