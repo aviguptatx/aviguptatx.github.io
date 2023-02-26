@@ -5,10 +5,14 @@ from pandas import DataFrame
 import json
 import trueskill
 from trueskill import Rating, rate
-from utils import write_df_to_html_file, convert_seconds_to_time
+from utils import (
+    write_df_to_html_file,
+    convert_seconds_to_time,
+    convert_time_to_seconds,
+)
 
 
-def update_database_and_history():
+def update_data():
     # pass in cookies and headers for request -- yes this isn't super secure but it's good enough
     cookies = {
         "nyt-a": "1Cnj_QdNOQ4lY6fMFyViCV",
@@ -219,11 +223,6 @@ def update_database_and_history():
         json.dump(leaderboard, f)
 
 
-def convert_time_to_seconds(time_str):
-    minutes, seconds = map(int, time_str.split(":"))
-    return minutes * 60 + seconds
-
-
 def update_history(today_df, year: str, date: str):
     # pull existing history html, if any (we will prepend to this)
     try:
@@ -238,4 +237,4 @@ def update_history(today_df, year: str, date: str):
 
 
 if __name__ == "__main__":
-    update_database_and_history()
+    update_data()

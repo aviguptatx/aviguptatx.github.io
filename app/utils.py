@@ -11,12 +11,32 @@ def write_df_to_html_file(html_io_wrapper, df, suffix="", title="", subtitle="")
 <html>
 <head>
 <style>
-    h3 {
+    hr {
+        border: none;
+        border-top: 3px double #333;
+        color: #333;
+        overflow: visible;
+        text-align: center;
+        height: 5px;
+    }
+    hr:after {
+    background: #fff;
+    content: '§';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+    }
+    h1 {
+        line-height: 1em;
         text-align: center;
         font-family: Helvetica, Arial, sans-serif;
     }
-    h1 {
-        line-height: 2em;
+    h2 {
+        line-height: .7em;
+        text-align: center;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    h3 {
         text-align: center;
         font-family: Helvetica, Arial, sans-serif;
     }
@@ -63,6 +83,11 @@ def write_df_to_html_file(html_io_wrapper, df, suffix="", title="", subtitle="")
 </html>
 """
     html_io_wrapper.write(result + suffix)
+
+
+def convert_time_to_seconds(time_str):
+    minutes, seconds = map(int, time_str.split(":"))
+    return minutes * 60 + seconds
 
 
 def convert_seconds_to_time(duration_in_seconds):

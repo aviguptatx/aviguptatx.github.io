@@ -5,7 +5,7 @@ import os
 from utils import convert_seconds_to_time, write_df_to_html_file
 
 
-def update_main_leaderboard():
+def update_website():
     df = pd.read_json(r"data/leaderboard.json").T
 
     # make avg_time look nicer and rename columns
@@ -57,6 +57,8 @@ def update_main_leaderboard():
         subtitle=last_updated_string,
     )
 
+    html_io_wrapper.write("<hr>")
+
     # Create history links
     directory = "history"
     html_files = [f for f in os.listdir(directory) if f.endswith(".html")]
@@ -71,10 +73,16 @@ def update_main_leaderboard():
         # Append the link HTML to the overall HTML for the page
         links_html += link_html
     links_html += "</h3>"
-
-    html_io_wrapper.write("<h1> Daily History </h1>")
+    html_io_wrapper.write("<h2> Daily History </h2>")
     html_io_wrapper.write(links_html)
+
+    html_io_wrapper.write("<hr>")
+
+    # Add link to join leaderboard
+    html_io_wrapper.write(
+        "<h2> <a href='https://www.nytimes.com/puzzles/leaderboards/invite/341f3f73-133e-440d-b6ca-ca5b08a0d7c4'>Join the Leaderboard!</a> </h2>"
+    )
 
 
 if __name__ == "__main__":
-    update_main_leaderboard()
+    update_website()
