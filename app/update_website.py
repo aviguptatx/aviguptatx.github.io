@@ -55,7 +55,7 @@ def update_website():
         df_sorted,
         title="The Real Crossword Leaderboard",
         subtitle=last_updated_string,
-        add_style_sheet=True,
+        style_sheet_link="styles/style.css",
     )
 
     html_io_wrapper.write("<hr>\n")

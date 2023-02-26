@@ -238,7 +238,7 @@ def update_history(today_df, year: str, date: str):
         today_df,
         suffix=existing_html,
         title=date,
-        add_style_sheet=True,
+        style_sheet_link="../styles/style.css",
     )
 
 
