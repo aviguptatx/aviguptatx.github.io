@@ -12,9 +12,18 @@ def update_website():
         convert_seconds_to_time(int(avg_time_in_seconds))
         for avg_time_in_seconds in df["avg_time"]
     ]
+
     df.drop(labels=["mu", "sigma"], axis=1, inplace=True)
+
+    # convert avg_ratio to a percentage
+    df["avg_ratio"] = pd.Series(
+        ["{0:.2f}%".format(val * 100) for val in df["avg_ratio"]], index=df.index
+    )
+
+    # rename columns
     df.rename(
         columns={
+            "avg_ratio": "Avg. % of Winner's Time",
             "avg_rank": "Avg. Rank",
             "avg_time": "Avg. Time",
             "num_wins": "# Wins",
@@ -100,7 +109,7 @@ def write_to_html_file(df, html_io_wrapper, title="", subtitle=""):
     if type(df) == pd.io.formats.style.Styler:
         result += df.render()
     else:
-        result += df.to_html(classes="wide", escape=False)
+        result += df.to_html(escape=False)
     result += "<h4> %s </h4>\n" % subtitle
     result += """
 </body>

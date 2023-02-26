@@ -88,6 +88,7 @@ def fetch_leaderboard():
 
     # used in the case of equivalent times -- makes sure NYT ordering doesn't matter
     prev_time = -1
+    winning_time = 0
 
     # iterate through all daily leaderboard entries and update database
     for rank, item in enumerate(leaderboard_raw, 1):
@@ -108,13 +109,19 @@ def fetch_leaderboard():
             item.find("p", {"class": "lbd-score__time"}).text.strip()
         )
 
+        if rank == 1:
+            winning_time = time_in_seconds
+
         # account for ties
         if time_in_seconds == prev_time:
             rank = rank - 1
 
+        winning_time_ratio = time_in_seconds / winning_time
+
         if not username in prev_data:  # our current contestant is not in the database
             avg_rank = rank
             avg_time = time_in_seconds
+            avg_ratio = winning_time_ratio
             num_wins = 1 if rank == 1 else 0
             num_games = 1
             prev_mu = trueskill.MU
@@ -129,6 +136,9 @@ def fetch_leaderboard():
             avg_time = (player_data["avg_time"] * prev_num_games + time_in_seconds) / (
                 prev_num_games + 1
             )
+            avg_ratio = (
+                player_data["avg_ratio"] * prev_num_games + winning_time_ratio
+            ) / (prev_num_games + 1)
             num_games = prev_num_games + 1
             num_wins = player_data["num_wins"] + (1 if rank == 1 else 0)
             prev_mu = player_data["mu"]
@@ -136,6 +146,7 @@ def fetch_leaderboard():
 
         # update leaderboard stats
         leaderboard[username] = {
+            "avg_ratio": avg_ratio,
             "avg_rank": avg_rank,
             "avg_time": avg_time,
             "num_wins": num_wins,
