@@ -5,10 +5,11 @@ Site Link:
 
 Current Features:
   - auto updates website once per day with new results
-  - displays table with average time, average rank, wins, and games played
+  - calculates and displays ELO (trueskill elo system)
+  - also displays average time and rank, as wel as number of wins and games played
 
 Future Additions:
-  - implement trueskill elo system
+  - update scoreboard more than once per day (but only update elos once per day)
   - add historical time graph and ranking graph comparing all players
   - separate saturday mini (which is longer) into different category
 
