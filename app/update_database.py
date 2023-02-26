@@ -86,6 +86,9 @@ def fetch_leaderboard():
     post_sigmas = []
     usernames = []
 
+    # used in the case of equivalent times -- makes sure NYT ordering doesn't matter
+    prev_time = -1
+
     # iterate through all daily leaderboard entries and update database
     for rank, item in enumerate(leaderboard_raw, 1):
         # skip this player if they have no time
@@ -104,6 +107,10 @@ def fetch_leaderboard():
         time_in_seconds = convert_time_to_seconds(
             item.find("p", {"class": "lbd-score__time"}).text.strip()
         )
+
+        # account for ties
+        if time_in_seconds == prev_time:
+            rank = rank - 1
 
         if not username in prev_data:  # our current contestant is not in the database
             avg_rank = rank
@@ -140,8 +147,9 @@ def fetch_leaderboard():
 
         # trueskill ranks are 0-indexed
         ranks.append(rank - 1)
-
         trueskills.append(Rating(mu=prev_mu, sigma=prev_sigma))
+
+        prev_time = time_in_seconds
 
     # update ratings
     trueskills_tuples = [(x,) for x in trueskills]
