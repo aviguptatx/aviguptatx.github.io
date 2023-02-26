@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import json
 import trueskill
-import datetime
+from trueskill import Rating, rate
+
 
 def fetch_leaderboard():
-    # pass in cookies and headers for request
-    # yes this isn't super secure but it's good enough
+    # pass in cookies and headers for request -- yes this isn't super secure but it's good enough
     cookies = {
         'nyt-a': '1Cnj_QdNOQ4lY6fMFyViCV',
         'purr-cache': '<K0<r<C_<G_<S0',
@@ -73,36 +73,82 @@ def fetch_leaderboard():
     # new leaderboard dict
     leaderboard = {}
 
+    # trueskill stuff
+    trueskills = []
+    ranks = []    
+    prev_mus = []    
+    prev_sigmas = []
+    post_mus = []
+    post_sigmas = []
+    usernames = []
+
     # iterate through all daily leaderboard entries and update database
     for rank, item in enumerate(leaderboard_raw, 1):
+        # skip this player if they have no time
         if (item.find('p', {'class': 'lbd-score__time'}).text.strip() == '--'):
             continue
+
+        # fetch player username
         username = item.find('p', {'class': 'lbd-score__name'}).text.strip()
         if username == "avi (you)":  # needed because we are pulling data from my own leaderboard -- can consider using a separate indexer account
             username = "avi"
+        usernames.append(username)
+        
+        # fetch player time
         time_in_seconds = convert_time_to_seconds(item.find('p', {'class': 'lbd-score__time'}).text.strip())
 
         if not username in prev_data:  # our current contestant is not in the database
-            # elo_rating = trueskill.MU
-            # sigma = trueskill.SIGMA
-            leaderboard[username] = {'avg_rank': rank,
-                                     'avg_time': time_in_seconds,
-                                     'wins': 1 if rank == 1 else 0,
-                                     'num_games': 1}
+            avg_rank = rank
+            avg_time = time_in_seconds
+            num_wins = 1 if rank == 1 else 0
+            num_games = 1
+            prev_mu = trueskill.MU
+            prev_sigma = trueskill.SIGMA
         else:  # current contestant is in the database
             player_data = prev_data[username]
             prev_num_games = player_data['num_games']
-            prev_avg_time = player_data['avg_time']
 
             avg_rank = (player_data['avg_rank'] * prev_num_games + rank) / (prev_num_games + 1)
-            avg_time = (prev_avg_time * prev_num_games + time_in_seconds) / (prev_num_games + 1)
+            avg_time = ( player_data['avg_time'] * prev_num_games + time_in_seconds) / (prev_num_games + 1)
             num_games = prev_num_games + 1
-            wins = player_data['wins'] + (1 if rank == 1 else 0)
-            leaderboard[username] = {'avg_rank': avg_rank,
-                                     'avg_time': avg_time,
-                                     'wins': wins,
-                                     'num_games': num_games}
-    
+            num_wins = player_data['num_wins'] + (1 if rank == 1 else 0)
+            prev_mu = player_data['mu']
+            prev_sigma = player_data['sigma']
+        
+        # update leaderboard stats
+        leaderboard[username] = {'avg_rank': avg_rank,
+                                 'avg_time': avg_time,
+                                 'num_wins': num_wins,
+                                 'num_games': num_games}
+        
+        prev_mus.append(prev_mu)
+        prev_sigmas.append(prev_sigma)
+
+        # trueskill ranks are 0-indexed
+        ranks.append(rank - 1)
+
+        trueskills.append(Rating(mu=prev_mu, sigma=prev_sigma))
+
+    # update ratings
+    trueskills_tuples = [(x,) for x in trueskills]
+    try:
+        # get results from trueskill method
+        results = rate(trueskills_tuples, ranks=ranks)
+        #  store new mu and sigma for each player
+        for result in results:
+            post_mus.append(round(result[0].mu, 2))
+            post_sigmas.append(round(result[0].sigma, 2))        
+    except:  # if something goes wrong, just use previous ratings
+        post_mus = prev_mus
+        post_sigmas = prev_sigmas
+
+    for i, username in enumerate(usernames):
+        mu = post_mus[i]
+        sigma = post_sigmas[i]
+        leaderboard[username]['mu'] = mu
+        leaderboard[username]['sigma'] = sigma
+        leaderboard[username]['elo'] = (mu - 3 * sigma) * 60
+
 
     with open('data/leaderboard.json', 'w') as f:
         json.dump(leaderboard, f)
@@ -115,5 +161,4 @@ def convert_time_to_seconds(time_str):
 
 if __name__ == "__main__":
     fetch_leaderboard()
-
 
