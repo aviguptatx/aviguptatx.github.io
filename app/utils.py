@@ -1,4 +1,7 @@
-def write_to_html_file(html_io_wrapper, df, suffix="", title="", subtitle=""):
+import pandas.io.formats.style
+
+
+def write_df_to_html_file(html_io_wrapper, df, suffix="", title="", subtitle=""):
     """
     Write an entire dataframe to an HTML file with nice formatting.
     """

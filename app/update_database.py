@@ -5,7 +5,7 @@ from pandas import DataFrame
 import json
 import trueskill
 from trueskill import Rating, rate
-from utils import write_to_html_file, convert_seconds_to_time
+from utils import write_df_to_html_file, convert_seconds_to_time
 
 
 def update_database_and_history():
@@ -77,7 +77,11 @@ def update_database_and_history():
     )
 
     # get current year (for the history page)
-    date = soup.find("div", {"class": "lbd-board__header lbd-type__centered"}).find("h3", {"class": "lbd-type__date"}).text.strip()
+    date = (
+        soup.find("div", {"class": "lbd-board__header lbd-type__centered"})
+        .find("h3", {"class": "lbd-type__date"})
+        .text.strip()
+    )
     year = date[-4:]
 
     # new leaderboard dict
@@ -200,9 +204,8 @@ def update_database_and_history():
 
     # write today's performances to the history file
     today_df = pd.DataFrame(
-    {'Rank': today_ranks,
-     'Time': today_times
-    }, index=today_names)
+        {"Rank": today_ranks, "Time": today_times}, index=today_names
+    )
     today_df.columns.name = "Username"
     update_history(today_df, year, date)
 
@@ -224,14 +227,14 @@ def convert_time_to_seconds(time_str):
 def update_history(today_df, year: str, date: str):
     # pull existing history html, if any (we will prepend to this)
     try:
-        with open(f'history/{year}.html', 'r') as f:
+        with open(f"history/{year}.html", "r") as f:
             existing_html = f.read()
     except:
         existing_html = ""
 
     # write today's results to the history file
     html_io_wrapper = open(f"history/{year}.html", "w")
-    write_to_html_file(html_io_wrapper, today_df, suffix=existing_html, title=date)
+    write_df_to_html_file(html_io_wrapper, today_df, suffix=existing_html, title=date)
 
 
 if __name__ == "__main__":

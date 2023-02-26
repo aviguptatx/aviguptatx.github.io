@@ -1,9 +1,8 @@
 import pandas as pd
-import pandas.io.formats.style
 import datetime
 import pytz
 import os
-from utils import convert_seconds_to_time, write_to_html_file
+from utils import convert_seconds_to_time, write_df_to_html_file
 
 
 def update_main_leaderboard():
@@ -51,7 +50,7 @@ def update_main_leaderboard():
     last_updated_string = "Last updated: " + datetime.datetime.now(
         pytz.timezone("US/Central")
     ).strftime("%I:%M%p on %B %d, %Y")
-    write_to_html_file(
+    write_df_to_html_file(
         html_io_wrapper,
         df_sorted,
         title="The Real Crossword Leaderboard",
@@ -59,8 +58,8 @@ def update_main_leaderboard():
     )
 
     # Create history links
-    directory = 'history'
-    html_files = [f for f in os.listdir(directory) if f.endswith('.html')]
+    directory = "history"
+    html_files = [f for f in os.listdir(directory) if f.endswith(".html")]
     html_files.sort(reverse=True)
     # Generate HTML code for the links to each page
     links_html = "<h3>"
