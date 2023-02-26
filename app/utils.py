@@ -3,7 +3,7 @@ import pandas.io.formats.style
 
 
 def write_df_to_html_file(
-    html_io_wrapper, df, suffix="", title="", subtitle="", add_style_sheet=True
+    html_io_wrapper, df, suffix="", title="", subtitle="", style_sheet_link=''
 ):
     """
     Write an entire dataframe to an HTML file with nice formatting.
@@ -11,10 +11,10 @@ def write_df_to_html_file(
 
     result = "<html>"
 
-    if add_style_sheet:
-        result += """
+    if style_sheet_link != '':
+        result += f"""
 <head>
-    <link rel="stylesheet" href="styles/style.css"
+    <link rel="stylesheet" href=f"{style_sheet_link}"
 </head>
 """
 
