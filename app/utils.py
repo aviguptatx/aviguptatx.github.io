@@ -14,7 +14,7 @@ def write_df_to_html_file(
     if style_sheet_link != '':
         result += f"""
 <head>
-    <link rel="stylesheet" href=f"{style_sheet_link}"
+    <link rel="stylesheet" href="{style_sheet_link}"
 </head>
 """
 
