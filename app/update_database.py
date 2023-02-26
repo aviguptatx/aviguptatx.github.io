@@ -233,7 +233,13 @@ def update_history(today_df, year: str, date: str):
 
     # write today's results to the history file
     html_io_wrapper = open(f"history/{year}.html", "w")
-    write_df_to_html_file(html_io_wrapper, today_df, suffix=existing_html, title=date)
+    write_df_to_html_file(
+        html_io_wrapper,
+        today_df,
+        suffix=existing_html,
+        title=date,
+        add_style_sheet=True,
+    )
 
 
 if __name__ == "__main__":

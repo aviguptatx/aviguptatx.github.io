@@ -2,82 +2,30 @@ import pandas as pd
 import pandas.io.formats.style
 
 
-def write_df_to_html_file(html_io_wrapper, df, suffix="", title="", subtitle=""):
+def write_df_to_html_file(
+    html_io_wrapper, df, suffix="", title="", subtitle="", add_style_sheet=True
+):
     """
     Write an entire dataframe to an HTML file with nice formatting.
     """
 
-    result = """
-<html>
+    result = "<html>"
+
+    if add_style_sheet:
+        result += """
 <head>
-<style>
-    hr {
-        border: none;
-        border-top: 3px double #333;
-        color: #333;
-        overflow: visible;
-        text-align: center;
-        height: 5px;
-    }
-    hr:after {
-    background: #fff;
-    content: '§';
-    padding: 0 4px;
-    position: relative;
-    top: -13px;
-    }
-    h1 {
-        line-height: 1em;
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    h2 {
-        line-height: .7em;
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    h3 {
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    h4 {
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    h5 {
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    table { 
-        margin-left: auto;
-        margin-right: auto;
-    }
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 5px;
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 90%;
-    }
-    table tbody tr:hover {
-        background-color: #dddddd;
-    }
-    .wide {
-        width: 90%; 
-    }
-</style>
+    <link rel="stylesheet" href="styles/style.css"
 </head>
-<body>
-    """
-    result += "<h1> %s </h1>\n" % title
+"""
+
+    result += "<body>"
+
+    result += "\n<h1> %s </h1>\n" % title
     if type(df) == pd.io.formats.style.Styler:
         result += df.render()
     else:
         result += df.to_html(classes="wide", escape=False)
-    result += "<h4> %s </h4>\n" % subtitle
+    result += "\n<h4> %s </h4>" % subtitle
     result += """
 </body>
 </html>

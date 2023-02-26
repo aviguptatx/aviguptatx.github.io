@@ -55,9 +55,10 @@ def update_website():
         df_sorted,
         title="The Real Crossword Leaderboard",
         subtitle=last_updated_string,
+        add_style_sheet=True,
     )
 
-    html_io_wrapper.write("<hr>")
+    html_io_wrapper.write("<hr>\n")
 
     # Create history links
     directory = "history"
@@ -72,11 +73,11 @@ def update_website():
         link_html = f'<a href="{directory}/{file}">{name}</a><br>\n'
         # Append the link HTML to the overall HTML for the page
         links_html += link_html
-    links_html += "</h3>"
-    html_io_wrapper.write("<h2> Daily History </h2>")
+    links_html += "</h3>\n"
+    html_io_wrapper.write("<h2> Daily History </h2>\n")
     html_io_wrapper.write(links_html)
 
-    html_io_wrapper.write("<hr>")
+    html_io_wrapper.write("<hr>\n")
 
     # Add link to join leaderboard
     html_io_wrapper.write(
