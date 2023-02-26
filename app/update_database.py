@@ -1,12 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from pandas import DataFrame
 import json
 import trueskill
 from trueskill import Rating, rate
+from utils import write_to_html_file, convert_seconds_to_time
 
 
-def fetch_leaderboard():
+def update_database_and_history():
     # pass in cookies and headers for request -- yes this isn't super secure but it's good enough
     cookies = {
         "nyt-a": "1Cnj_QdNOQ4lY6fMFyViCV",
@@ -70,12 +72,21 @@ def fetch_leaderboard():
         "https://www.nytimes.com/puzzles/leaderboards", cookies=cookies, headers=headers
     )
     soup = BeautifulSoup(r.text, "html.parser")
-    leaderboard_raw = soup.find("div", {"class": "lbd-board__items"}).find_all(
+    leaderboard_scores = soup.find("div", {"class": "lbd-board__items"}).find_all(
         "div", {"class": "lbd-score"}
     )
 
+    # get current year (for the history page)
+    date = soup.find("div", {"class": "lbd-board__header lbd-type__centered"}).find("h3", {"class": "lbd-type__date"}).text.strip()
+    year = date[-4:]
+
     # new leaderboard dict
     leaderboard = {}
+
+    # daily leaderboard for match history
+    today_ranks = []
+    today_names = []
+    today_times = []
 
     # trueskill stuff
     trueskills = []
@@ -91,7 +102,7 @@ def fetch_leaderboard():
     winning_time = 0
 
     # iterate through all daily leaderboard entries and update database
-    for rank, item in enumerate(leaderboard_raw, 1):
+    for rank, item in enumerate(leaderboard_scores, 1):
         # skip this player if they have no time
         if item.find("p", {"class": "lbd-score__time"}).text.strip() == "--":
             continue
@@ -115,6 +126,11 @@ def fetch_leaderboard():
         # account for ties
         if time_in_seconds == prev_time:
             rank = rank - 1
+
+        # update daily stats
+        today_ranks.append(rank)
+        today_names.append(username)
+        today_times.append(convert_seconds_to_time(time_in_seconds))
 
         winning_time_ratio = time_in_seconds / winning_time
 
@@ -182,6 +198,14 @@ def fetch_leaderboard():
         leaderboard[username]["sigma"] = sigma
         leaderboard[username]["elo"] = (mu - 3 * sigma) * 60
 
+    # write today's performances to the history file
+    today_df = pd.DataFrame(
+    {'Rank': today_ranks,
+     'Time': today_times
+    }, index=today_names)
+    today_df.columns.name = "Username"
+    update_history(today_df, year, date)
+
     # add back old data for contestants that didn't participate in this puzzle
     for username in prev_data:
         if not username in leaderboard:
@@ -197,5 +221,18 @@ def convert_time_to_seconds(time_str):
     return minutes * 60 + seconds
 
 
+def update_history(today_df, year: str, date: str):
+    # pull existing history html, if any (we will prepend to this)
+    try:
+        with open(f'history/{year}.html', 'r') as f:
+            existing_html = f.read()
+    except:
+        existing_html = ""
+
+    # write today's results to the history file
+    html_io_wrapper = open(f"history/{year}.html", "w")
+    write_to_html_file(html_io_wrapper, today_df, suffix=existing_html, title=date)
+
+
 if __name__ == "__main__":
-    fetch_leaderboard()
+    update_database_and_history()

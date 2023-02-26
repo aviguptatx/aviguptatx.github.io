@@ -2,9 +2,11 @@ import pandas as pd
 import pandas.io.formats.style
 import datetime
 import pytz
+import os
+from utils import convert_seconds_to_time, write_to_html_file
 
 
-def update_website():
+def update_main_leaderboard():
     df = pd.read_json(r"data/leaderboard.json").T
 
     # make avg_time look nicer and rename columns
@@ -50,73 +52,30 @@ def update_website():
         pytz.timezone("US/Central")
     ).strftime("%I:%M%p on %B %d, %Y")
     write_to_html_file(
-        df_sorted,
         html_io_wrapper,
+        df_sorted,
         title="The Real Crossword Leaderboard",
         subtitle=last_updated_string,
     )
 
+    # Create history links
+    directory = 'history'
+    html_files = [f for f in os.listdir(directory) if f.endswith('.html')]
+    html_files.sort(reverse=True)
+    # Generate HTML code for the links to each page
+    links_html = "<h3>"
+    for file in html_files:
+        # Get the name of the file without the extension
+        name = os.path.splitext(file)[0]
+        # Generate the link HTML
+        link_html = f'<a href="{directory}/{file}">{name}</a><br>\n'
+        # Append the link HTML to the overall HTML for the page
+        links_html += link_html
+    links_html += "</h3>"
 
-def convert_seconds_to_time(duration_in_seconds):
-    minutes = duration_in_seconds // 60
-    seconds = duration_in_seconds % 60
-    return f"{minutes}:{seconds:02d}"
-
-
-def write_to_html_file(df, html_io_wrapper, title="", subtitle=""):
-    """
-    Write an entire dataframe to an HTML file with nice formatting.
-    """
-
-    result = """
-<html>
-<head>
-<style>
-    h1 {
-        line-height: 2em;
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    h4 {
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-    }
-    table { 
-        margin-left: auto;
-        margin-right: auto;
-    }
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 5px;
-        text-align: center;
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 90%;
-    }
-    table tbody tr:hover {
-        background-color: #dddddd;
-    }
-    .wide {
-        width: 90%; 
-    }
-</style>
-</head>
-<body>
-    """
-    result += "<h1> %s </h1>\n" % title
-    if type(df) == pd.io.formats.style.Styler:
-        result += df.render()
-    else:
-        result += df.to_html(escape=False)
-    result += "<h4> %s </h4>\n" % subtitle
-    result += """
-</body>
-</html>
-"""
-    html_io_wrapper.write(result)
+    html_io_wrapper.write("<h1> Daily History </h1>")
+    html_io_wrapper.write(links_html)
 
 
 if __name__ == "__main__":
-    update_website()
+    update_main_leaderboard()
