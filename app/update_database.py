@@ -171,6 +171,12 @@ def fetch_leaderboard():
         leaderboard[username]["sigma"] = sigma
         leaderboard[username]["elo"] = (mu - 3 * sigma) * 60
 
+    # add back old data for contestants that didn't participate in this puzzle
+    for username in prev_data:
+        if not username in leaderboard:
+            leaderboard[username] = prev_data[username]
+
+    # write data to database
     with open("data/leaderboard.json", "w") as f:
         json.dump(leaderboard, f)
 
