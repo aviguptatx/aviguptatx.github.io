@@ -3,8 +3,8 @@ name: update website
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * 2-5'  # Run at 8:00 PM CT Mon-Fri (or 7:00 PM if clocks move forward)
-    - cron: '0 22 * * 6,0'  # Run at 4:00 PM CT Sat/Sun (or 3:00 PM if clocks move forward)
+    - cron: '0 1 * * 2-5'  # Run at 7:00 PM CT Mon-Fri (or 6:00 PM if clocks move forward)
+    - cron: '0 21 * * 6,0'  # Run at 3:00 PM CT Sat/Sun (or 2:00 PM if clocks move forward)
 
 jobs:
   update_database:
