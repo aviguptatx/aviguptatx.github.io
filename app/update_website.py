@@ -16,15 +16,19 @@ def update_website():
 
     df.drop(labels=["mu", "sigma"], axis=1, inplace=True)
 
-    # convert avg_ratio to a percentage
+    # format avg_ratio
     df["avg_ratio"] = pd.Series(
-        ["{0:.2f}%".format(val * 100) for val in df["avg_ratio"]], index=df.index
+        ["{0:.2f}x".format(val) for val in df["avg_ratio"]], index=df.index
+    )
+    # format avg_rank
+    df["avg_rank"] = pd.Series(
+        ["{0:.2f}".format(val) for val in df["avg_rank"]], index=df.index
     )
 
     # rename columns
     df.rename(
         columns={
-            "avg_ratio": "Avg. % of Winner's Time",
+            "avg_ratio": "Avg. Multiple of Winner's Time",
             "avg_rank": "Avg. Rank",
             "avg_time": "Avg. Time",
             "num_wins": "# Wins",
