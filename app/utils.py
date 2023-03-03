@@ -3,7 +3,14 @@ import pandas.io.formats.style
 
 
 def write_df_to_html_file(
-    html_io_wrapper, df, suffix="", title="", subtitle="", style_sheet_link=''
+    html_io_wrapper,
+    df,
+    suffix="",
+    df_title="",
+    df_subtitle="",
+    style_sheet_link="",
+    title="Untitled Page",
+    icon_link="",
 ):
     """
     Write an entire dataframe to an HTML file with nice formatting.
@@ -11,21 +18,23 @@ def write_df_to_html_file(
 
     result = "<html>"
 
-    if style_sheet_link != '':
+    if style_sheet_link != "":
         result += f"""
 <head>
+    <link rel="icon" type="image/x-icon" href="{icon_link}">
+    <title>{title}</title>
     <link rel="stylesheet" href="{style_sheet_link}"
 </head>
 """
 
     result += "<body>"
 
-    result += "\n<h1> %s </h1>\n" % title
+    result += "\n<h1> %s </h1>\n" % df_title
     if type(df) == pd.io.formats.style.Styler:
         result += df.render()
     else:
         result += df.to_html(classes="wide", escape=False)
-    result += "\n<h4> %s </h4>" % subtitle
+    result += "\n<h4> %s </h4>" % df_subtitle
     result += """
 </body>
 </html>

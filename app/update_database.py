@@ -237,8 +237,10 @@ def update_history(today_df, year: str, date: str):
         html_io_wrapper,
         today_df,
         suffix=existing_html,
-        title=date,
+        df_title=date,
         style_sheet_link="../styles/style.css",
+        title=f"{year} Results",
+        icon_link="../images/favicon.ico",
     )
 
 

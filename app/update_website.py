@@ -57,9 +57,11 @@ def update_website():
     write_df_to_html_file(
         html_io_wrapper,
         df_sorted,
-        title="The Real Crossword Leaderboard",
-        subtitle=last_updated_string,
+        df_title="The Real Crossword Leaderboard",
+        df_subtitle=last_updated_string,
         style_sheet_link="styles/style.css",
+        title="Crossword Leaderboard",
+        icon_link="images/favicon.ico",
     )
 
     html_io_wrapper.write("<hr>\n")
