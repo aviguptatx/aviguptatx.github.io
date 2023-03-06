@@ -220,7 +220,7 @@ def update_data():
 
     # write data to database
     with open("data/leaderboard.json", "w") as f:
-        json.dump(leaderboard, f)
+        json.dump(leaderboard, f, indent=2)
 
 
 def update_history(today_df, year: str, date: str):
