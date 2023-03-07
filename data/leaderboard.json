@@ -1,13 +1,123 @@
 {
+  "pravnav": {
+    "avg_ratio": 1.3540166522074417,
+    "avg_rank": 2.5,
+    "avg_time": 40.1,
+    "num_wins": 4,
+    "num_games": 10,
+    "mu": 34.56,
+    "sigma": 1.69,
+    "elo": 1769.4
+  },
   ".Rohit": {
-    "avg_ratio": 1.7694390754259175,
-    "avg_rank": 3.888888888888889,
-    "avg_time": 56.888888888888886,
+    "avg_ratio": 1.7791618345499924,
+    "avg_rank": 3.7,
+    "avg_time": 54.0,
     "num_wins": 2,
+    "num_games": 10,
+    "mu": 31.18,
+    "sigma": 1.64,
+    "elo": 1575.6
+  },
+  "Varun": {
+    "avg_ratio": 1.5736092374908166,
+    "avg_rank": 3.4,
+    "avg_time": 49.6,
+    "num_wins": 1,
+    "num_games": 10,
+    "mu": 31.89,
+    "sigma": 1.62,
+    "elo": 1621.8000000000002
+  },
+  "Sarvesh Phoenix": {
+    "avg_ratio": 1.7976190476190477,
+    "avg_rank": 3.25,
+    "avg_time": 33.5,
+    "num_wins": 1,
+    "num_games": 4,
+    "mu": 32.57,
+    "sigma": 2.43,
+    "elo": 1516.8000000000002
+  },
+  "Milan06": {
+    "avg_ratio": 3.3625,
+    "avg_rank": 7.0,
+    "avg_time": 63.0,
+    "num_wins": 0,
+    "num_games": 2,
+    "mu": 25.04,
+    "sigma": 3.1,
+    "elo": 944.3999999999999
+  },
+  "avi": {
+    "avg_ratio": 3.979298015048015,
+    "avg_rank": 6.5,
+    "avg_time": 120.0,
+    "num_wins": 0,
+    "num_games": 10,
+    "mu": 23.37,
+    "sigma": 1.62,
+    "elo": 1110.6000000000001
+  },
+  "yuann": {
+    "avg_ratio": 2.448339799820063,
+    "avg_rank": 3.1666666666666665,
+    "avg_time": 59.166666666666664,
+    "num_wins": 1,
+    "num_games": 6,
+    "mu": 32.07,
+    "sigma": 1.96,
+    "elo": 1571.4
+  },
+  "!VirajTech": {
+    "avg_ratio": 3.0400556673648778,
+    "avg_rank": 6.1,
+    "avg_time": 91.3,
+    "num_wins": 0,
+    "num_games": 10,
+    "mu": 24.57,
+    "sigma": 1.58,
+    "elo": 1189.8
+  },
+  "pianist": {
+    "avg_ratio": 4.781195797445798,
+    "avg_rank": 7.375,
+    "avg_time": 120.375,
+    "num_wins": 0,
+    "num_games": 8,
+    "mu": 21.12,
+    "sigma": 1.84,
+    "elo": 936.0000000000001
+  },
+  "Arnav": {
+    "avg_ratio": 10.322701184049869,
+    "avg_rank": 10.833333333333334,
+    "avg_time": 264.8333333333333,
+    "num_wins": 0,
+    "num_games": 6,
+    "mu": 11.61,
+    "sigma": 2.77,
+    "elo": 197.99999999999994
+  },
+  "sar": {
+    "avg_ratio": 5.104506726217253,
+    "avg_rank": 7.555555555555555,
+    "avg_time": 122.77777777777777,
+    "num_wins": 0,
     "num_games": 9,
-    "mu": 30.39,
-    "sigma": 1.74,
-    "elo": 1510.2
+    "mu": 21.19,
+    "sigma": 1.68,
+    "elo": 969.0000000000001
+  },
+  "Arya333": {
+    "avg_ratio": 7.42654761904762,
+    "avg_rank": 7.8,
+    "avg_time": 136.2,
+    "num_wins": 1,
+    "num_games": 5,
+    "mu": 20.77,
+    "sigma": 2.28,
+    "elo": 835.8
   },
   "BoBross": {
     "avg_ratio": 2.0415081250795537,
@@ -19,86 +129,6 @@
     "sigma": 1.85,
     "elo": 1321.2
   },
-  "yuann": {
-    "avg_ratio": 1.2180077597840757,
-    "avg_rank": 2.4,
-    "avg_time": 45.2,
-    "num_wins": 1,
-    "num_games": 5,
-    "mu": 33.93,
-    "sigma": 2.16,
-    "elo": 1647.0
-  },
-  "Varun": {
-    "avg_ratio": 1.4891954490638701,
-    "avg_rank": 3.4444444444444446,
-    "avg_time": 51.22222222222222,
-    "num_wins": 1,
-    "num_games": 9,
-    "mu": 31.64,
-    "sigma": 1.72,
-    "elo": 1588.8
-  },
-  "avi": {
-    "avg_ratio": 3.4732940907940906,
-    "avg_rank": 6.555555555555555,
-    "avg_time": 119.11111111111111,
-    "num_wins": 0,
-    "num_games": 9,
-    "mu": 22.76,
-    "sigma": 1.73,
-    "elo": 1054.2
-  },
-  "pravnav": {
-    "avg_ratio": 1.3933518357860464,
-    "avg_rank": 2.6666666666666665,
-    "avg_time": 42.888888888888886,
-    "num_wins": 3,
-    "num_games": 9,
-    "mu": 33.7,
-    "sigma": 1.77,
-    "elo": 1703.4
-  },
-  "sar": {
-    "avg_ratio": 3.8175700669944095,
-    "avg_rank": 7.125,
-    "avg_time": 109.25,
-    "num_wins": 0,
-    "num_games": 8,
-    "mu": 22.2,
-    "sigma": 1.79,
-    "elo": 1009.8
-  },
-  "!VirajTech": {
-    "avg_ratio": 2.3630248155906046,
-    "avg_rank": 5.888888888888889,
-    "avg_time": 86.22222222222223,
-    "num_wins": 0,
-    "num_games": 9,
-    "mu": 24.84,
-    "sigma": 1.68,
-    "elo": 1188.0
-  },
-  "Milan06": {
-    "avg_ratio": 2.7916666666666665,
-    "avg_rank": 9,
-    "avg_time": 67,
-    "num_wins": 0,
-    "num_games": 1,
-    "mu": 21.24,
-    "sigma": 4.18,
-    "elo": 522.0
-  },
-  "pianist": {
-    "avg_ratio": 3.6737475780332924,
-    "avg_rank": 7.142857142857143,
-    "avg_time": 110.71428571428571,
-    "num_wins": 0,
-    "num_games": 7,
-    "mu": 21.29,
-    "sigma": 1.99,
-    "elo": 919.2
-  },
   "Jake": {
     "avg_ratio": 4.791666666666667,
     "avg_rank": 11,
@@ -108,35 +138,5 @@
     "mu": 15.59,
     "sigma": 4.7,
     "elo": 89.3999999999999
-  },
-  "Arnav": {
-    "avg_ratio": 9.533908087526509,
-    "avg_rank": 11.0,
-    "avg_time": 275.0,
-    "num_wins": 0,
-    "num_games": 5,
-    "mu": 7.58,
-    "sigma": 3.4,
-    "elo": -157.19999999999996
-  },
-  "Arya333": {
-    "avg_ratio": 4.883184523809524,
-    "avg_rank": 6.75,
-    "avg_time": 104.25,
-    "num_wins": 1,
-    "num_games": 4,
-    "mu": 23.67,
-    "sigma": 2.54,
-    "elo": 963.0
-  },
-  "Sarvesh Phoenix": {
-    "avg_ratio": 1.396825396825397,
-    "avg_rank": 3.0,
-    "avg_time": 29.666666666666668,
-    "num_wins": 1,
-    "num_games": 3,
-    "mu": 33.23,
-    "sigma": 2.84,
-    "elo": 1482.6
   }
 }
