@@ -1,4 +1,134 @@
 {
+  "Sarvesh Phoenix": {
+    "avg_ratio": 1.5502645502645505,
+    "avg_rank": 2.6666666666666665,
+    "avg_time": 29.0,
+    "num_wins": 2,
+    "num_games": 6,
+    "mu": 34.72,
+    "sigma": 2.03,
+    "elo": 1717.8
+  },
+  ".Rohit": {
+    "avg_ratio": 1.862727454717586,
+    "avg_rank": 3.9166666666666665,
+    "avg_time": 52.083333333333336,
+    "num_wins": 2,
+    "num_games": 12,
+    "mu": 30.98,
+    "sigma": 1.48,
+    "elo": 1592.3999999999999
+  },
+  "pravnav": {
+    "avg_ratio": 1.4056620249876828,
+    "avg_rank": 2.75,
+    "avg_time": 38.66666666666667,
+    "num_wins": 4,
+    "num_games": 12,
+    "mu": 33.84,
+    "sigma": 1.51,
+    "elo": 1758.6000000000001
+  },
+  "BoBross": {
+    "avg_ratio": 1.9075927392594059,
+    "avg_rank": 4.555555555555555,
+    "avg_time": 70.11111111111111,
+    "num_wins": 0,
+    "num_games": 9,
+    "mu": 28.86,
+    "sigma": 1.61,
+    "elo": 1441.8000000000002
+  },
+  "Milan06": {
+    "avg_ratio": 3.104861111111111,
+    "avg_rank": 7.0,
+    "avg_time": 58.0,
+    "num_wins": 0,
+    "num_games": 4,
+    "mu": 25.31,
+    "sigma": 2.24,
+    "elo": 1115.3999999999999
+  },
+  "pianist": {
+    "avg_ratio": 4.721067749067749,
+    "avg_rank": 7.8,
+    "avg_time": 112.8,
+    "num_wins": 0,
+    "num_games": 10,
+    "mu": 21.21,
+    "sigma": 1.61,
+    "elo": 982.8000000000002
+  },
+  "avi": {
+    "avg_ratio": 4.1549705680955675,
+    "avg_rank": 7.166666666666667,
+    "avg_time": 115.41666666666667,
+    "num_wins": 0,
+    "num_games": 12,
+    "mu": 22.4,
+    "sigma": 1.46,
+    "elo": 1081.2
+  },
+  "Varun": {
+    "avg_ratio": 1.710415105316421,
+    "avg_rank": 3.9166666666666665,
+    "avg_time": 48.833333333333336,
+    "num_wins": 1,
+    "num_games": 12,
+    "mu": 30.65,
+    "sigma": 1.45,
+    "elo": 1577.9999999999998
+  },
+  "TylerKerch": {
+    "avg_ratio": 2.5472222222222225,
+    "avg_rank": 8.0,
+    "avg_time": 48.0,
+    "num_wins": 0,
+    "num_games": 2,
+    "mu": 24.67,
+    "sigma": 2.99,
+    "elo": 942.0000000000001
+  },
+  "Arnav": {
+    "avg_ratio": 8.68230366581518,
+    "avg_rank": 10.625,
+    "avg_time": 216.25,
+    "num_wins": 0,
+    "num_games": 8,
+    "mu": 15.81,
+    "sigma": 2.11,
+    "elo": 568.8000000000001
+  },
+  "sar": {
+    "avg_ratio": 4.9420711598343185,
+    "avg_rank": 8.090909090909092,
+    "avg_time": 114.9090909090909,
+    "num_wins": 0,
+    "num_games": 11,
+    "mu": 20.8,
+    "sigma": 1.5,
+    "elo": 978.0
+  },
+  "!VirajTech": {
+    "avg_ratio": 3.0255093524336947,
+    "avg_rank": 6.416666666666667,
+    "avg_time": 85.66666666666667,
+    "num_wins": 0,
+    "num_games": 12,
+    "mu": 24.5,
+    "sigma": 1.43,
+    "elo": 1212.6000000000001
+  },
+  "Arya333": {
+    "avg_ratio": 7.890391156462585,
+    "avg_rank": 9.142857142857142,
+    "avg_time": 147.42857142857142,
+    "num_wins": 1,
+    "num_games": 7,
+    "mu": 18.94,
+    "sigma": 1.91,
+    "elo": 792.6
+  },
   "yuann": {
     "avg_ratio": 2.2414341141314824,
     "avg_rank": 2.857142857142857,
@@ -8,136 +138,6 @@
     "mu": 33.41,
     "sigma": 1.84,
     "elo": 1673.3999999999999
-  },
-  "Sarvesh Phoenix": {
-    "avg_ratio": 1.6603174603174604,
-    "avg_rank": 3.0,
-    "avg_time": 30.8,
-    "num_wins": 1,
-    "num_games": 5,
-    "mu": 33.52,
-    "sigma": 2.17,
-    "elo": 1620.6000000000004
-  },
-  "BoBross": {
-    "avg_ratio": 1.9460418316668315,
-    "avg_rank": 4.625,
-    "avg_time": 74.875,
-    "num_wins": 0,
-    "num_games": 8,
-    "mu": 28.61,
-    "sigma": 1.72,
-    "elo": 1407.0
-  },
-  "!VirajTech": {
-    "avg_ratio": 2.9051011117458487,
-    "avg_rank": 5.909090909090909,
-    "avg_time": 85.54545454545455,
-    "num_wins": 0,
-    "num_games": 11,
-    "mu": 25.51,
-    "sigma": 1.5,
-    "elo": 1260.6000000000001
-  },
-  "pravnav": {
-    "avg_ratio": 1.392540390895654,
-    "avg_rank": 2.727272727272727,
-    "avg_time": 39.36363636363637,
-    "num_wins": 4,
-    "num_games": 11,
-    "mu": 33.98,
-    "sigma": 1.59,
-    "elo": 1752.6
-  },
-  "Varun": {
-    "avg_ratio": 1.6931801148906411,
-    "avg_rank": 3.6363636363636362,
-    "avg_time": 49.81818181818182,
-    "num_wins": 1,
-    "num_games": 11,
-    "mu": 31.48,
-    "sigma": 1.53,
-    "elo": 1613.4
-  },
-  "TylerKerch": {
-    "avg_ratio": 2.9444444444444446,
-    "avg_rank": 7,
-    "avg_time": 53,
-    "num_wins": 0,
-    "num_games": 1,
-    "mu": 26.55,
-    "sigma": 3.98,
-    "elo": 876.6
-  },
-  ".Rohit": {
-    "avg_ratio": 1.9002481324191849,
-    "avg_rank": 4.090909090909091,
-    "avg_time": 54.18181818181818,
-    "num_wins": 2,
-    "num_games": 11,
-    "mu": 30.37,
-    "sigma": 1.55,
-    "elo": 1543.1999999999998
-  },
-  "Milan06": {
-    "avg_ratio": 3.5564814814814816,
-    "avg_rank": 7.666666666666667,
-    "avg_time": 65.66666666666667,
-    "num_wins": 0,
-    "num_games": 3,
-    "mu": 24.26,
-    "sigma": 2.57,
-    "elo": 993.0000000000002
-  },
-  "Arnav": {
-    "avg_ratio": 9.522632760931634,
-    "avg_rank": 10.714285714285714,
-    "avg_time": 239.14285714285714,
-    "num_wins": 0,
-    "num_games": 7,
-    "mu": 14.3,
-    "sigma": 2.37,
-    "elo": 431.40000000000003
-  },
-  "sar": {
-    "avg_ratio": 5.06627827581775,
-    "avg_rank": 7.8,
-    "avg_time": 119.0,
-    "num_wins": 0,
-    "num_games": 10,
-    "mu": 21.1,
-    "sigma": 1.58,
-    "elo": 981.5999999999999
-  },
-  "Arya333": {
-    "avg_ratio": 7.105456349206349,
-    "avg_rank": 8.5,
-    "avg_time": 130.0,
-    "num_wins": 1,
-    "num_games": 6,
-    "mu": 20.28,
-    "sigma": 2.05,
-    "elo": 847.8000000000002
-  },
-  "pianist": {
-    "avg_ratio": 5.040075276741943,
-    "avg_rank": 8.0,
-    "avg_time": 121.22222222222223,
-    "num_wins": 0,
-    "num_games": 9,
-    "mu": 20.38,
-    "sigma": 1.72,
-    "elo": 913.1999999999999
-  },
-  "avi": {
-    "avg_ratio": 4.359967892467892,
-    "avg_rank": 7.181818181818182,
-    "avg_time": 122.45454545454545,
-    "num_wins": 0,
-    "num_games": 11,
-    "mu": 22.13,
-    "sigma": 1.54,
-    "elo": 1050.6
   },
   "Jake": {
     "avg_ratio": 4.791666666666667,
