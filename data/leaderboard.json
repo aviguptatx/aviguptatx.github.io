@@ -1,4 +1,134 @@
 {
+  "pravnav": {
+    "avg_ratio": 1.538358471602715,
+    "avg_rank": 2.8125,
+    "avg_time": 40.62500000000001,
+    "num_wins": 5,
+    "num_games": 16,
+    "mu": 33.46,
+    "sigma": 1.29,
+    "elo": 1775.4
+  },
+  "!VirajTech": {
+    "avg_ratio": 3.7827671400927496,
+    "avg_rank": 6.4375,
+    "avg_time": 99.5,
+    "num_wins": 0,
+    "num_games": 16,
+    "mu": 24.68,
+    "sigma": 1.24,
+    "elo": 1257.6000000000001
+  },
+  "Amar": {
+    "avg_ratio": 2.412655971479501,
+    "avg_rank": 6.0,
+    "avg_time": 65.5,
+    "num_wins": 0,
+    "num_games": 2,
+    "mu": 26.98,
+    "sigma": 3.01,
+    "elo": 1077.0000000000002
+  },
+  "Sarvesh Phoenix": {
+    "avg_ratio": 1.884957770987183,
+    "avg_rank": 2.875,
+    "avg_time": 36.5,
+    "num_wins": 2,
+    "num_games": 8,
+    "mu": 33.57,
+    "sigma": 1.72,
+    "elo": 1704.6
+  },
+  "yuann": {
+    "avg_ratio": 2.1294427036321597,
+    "avg_rank": 3.6666666666666665,
+    "avg_time": 49.77777777777778,
+    "num_wins": 2,
+    "num_games": 9,
+    "mu": 31.52,
+    "sigma": 1.6,
+    "elo": 1603.1999999999998
+  },
+  ".Rohit": {
+    "avg_ratio": 2.3434953830762164,
+    "avg_rank": 4.25,
+    "avg_time": 60.8125,
+    "num_wins": 2,
+    "num_games": 16,
+    "mu": 29.97,
+    "sigma": 1.25,
+    "elo": 1573.1999999999998
+  },
+  "Varun": {
+    "avg_ratio": 1.8045854426731942,
+    "avg_rank": 3.9375,
+    "avg_time": 48.6875,
+    "num_wins": 2,
+    "num_games": 16,
+    "mu": 30.67,
+    "sigma": 1.23,
+    "elo": 1618.8
+  },
+  "Arnav": {
+    "avg_ratio": 6.409513594599702,
+    "avg_rank": 9.000000000000002,
+    "avg_time": 159.91666666666666,
+    "num_wins": 0,
+    "num_games": 12,
+    "mu": 21.63,
+    "sigma": 1.56,
+    "elo": 1017.0
+  },
+  "avi": {
+    "avg_ratio": 4.132580174041571,
+    "avg_rank": 7.4375,
+    "avg_time": 111.75,
+    "num_wins": 0,
+    "num_games": 16,
+    "mu": 22.37,
+    "sigma": 1.23,
+    "elo": 1120.8
+  },
+  "Milan06": {
+    "avg_ratio": 2.7735838779956423,
+    "avg_rank": 7.571428571428571,
+    "avg_time": 58.42857142857143,
+    "num_wins": 0,
+    "num_games": 7,
+    "mu": 24.14,
+    "sigma": 1.71,
+    "elo": 1140.6000000000001
+  },
+  "TylerKerch": {
+    "avg_ratio": 2.2469736581501287,
+    "avg_rank": 6.6,
+    "avg_time": 47.0,
+    "num_wins": 0,
+    "num_games": 5,
+    "mu": 26.91,
+    "sigma": 1.99,
+    "elo": 1256.4
+  },
+  "sar": {
+    "avg_ratio": 4.921260845659711,
+    "avg_rank": 8.6,
+    "avg_time": 116.06666666666666,
+    "num_wins": 0,
+    "num_games": 15,
+    "mu": 20.1,
+    "sigma": 1.28,
+    "elo": 975.6000000000001
+  },
+  "Arya333": {
+    "avg_ratio": 8.080818787570124,
+    "avg_rank": 10.0,
+    "avg_time": 168.45454545454547,
+    "num_wins": 1,
+    "num_games": 11,
+    "mu": 16.68,
+    "sigma": 1.57,
+    "elo": 718.1999999999999
+  },
   "BoBross": {
     "avg_ratio": 1.7425758775758775,
     "avg_rank": 3.909090909090909,
@@ -9,126 +139,6 @@
     "sigma": 1.48,
     "elo": 1588.1999999999998
   },
-  "Varun": {
-    "avg_ratio": 1.787636236890623,
-    "avg_rank": 3.7333333333333334,
-    "avg_time": 49.6,
-    "num_wins": 2,
-    "num_games": 15,
-    "mu": 31.07,
-    "sigma": 1.28,
-    "elo": 1633.8
-  },
-  "pravnav": {
-    "avg_ratio": 1.5742490363762294,
-    "avg_rank": 2.933333333333333,
-    "avg_time": 42.20000000000001,
-    "num_wins": 4,
-    "num_games": 15,
-    "mu": 32.97,
-    "sigma": 1.33,
-    "elo": 1738.7999999999997
-  },
-  "TylerKerch": {
-    "avg_ratio": 1.9116582491582492,
-    "avg_rank": 5.5,
-    "avg_time": 43.5,
-    "num_wins": 0,
-    "num_games": 4,
-    "mu": 28.69,
-    "sigma": 2.21,
-    "elo": 1323.6000000000001
-  },
-  ".Rohit": {
-    "avg_ratio": 2.370316643908749,
-    "avg_rank": 4.133333333333334,
-    "avg_time": 62.666666666666664,
-    "num_wins": 2,
-    "num_games": 15,
-    "mu": 30.15,
-    "sigma": 1.3,
-    "elo": 1575.0
-  },
-  "Milan06": {
-    "avg_ratio": 2.8044753086419747,
-    "avg_rank": 7.333333333333333,
-    "avg_time": 60.833333333333336,
-    "num_wins": 0,
-    "num_games": 6,
-    "mu": 24.45,
-    "sigma": 1.85,
-    "elo": 1134.0
-  },
-  "Arnav": {
-    "avg_ratio": 6.7836404989216,
-    "avg_rank": 9.090909090909092,
-    "avg_time": 170.9090909090909,
-    "num_wins": 0,
-    "num_games": 11,
-    "mu": 21.2,
-    "sigma": 1.66,
-    "elo": 973.1999999999999
-  },
-  "!VirajTech": {
-    "avg_ratio": 3.940833969040109,
-    "avg_rank": 6.733333333333333,
-    "avg_time": 104.53333333333333,
-    "num_wins": 0,
-    "num_games": 15,
-    "mu": 23.72,
-    "sigma": 1.28,
-    "elo": 1192.8
-  },
-  "Amar": {
-    "avg_ratio": 3.0606060606060606,
-    "avg_rank": 9,
-    "avg_time": 101,
-    "num_wins": 0,
-    "num_games": 1,
-    "mu": 21.4,
-    "sigma": 4.02,
-    "elo": 560.4
-  },
-  "avi": {
-    "avg_ratio": 4.235536499369832,
-    "avg_rank": 7.333333333333333,
-    "avg_time": 116.26666666666667,
-    "num_wins": 0,
-    "num_games": 15,
-    "mu": 22.36,
-    "sigma": 1.28,
-    "elo": 1111.2
-  },
-  "sar": {
-    "avg_ratio": 4.982863511105992,
-    "avg_rank": 8.357142857142858,
-    "avg_time": 119.42857142857143,
-    "num_wins": 0,
-    "num_games": 14,
-    "mu": 20.36,
-    "sigma": 1.32,
-    "elo": 983.9999999999999
-  },
-  "Arya333": {
-    "avg_ratio": 8.471253607503607,
-    "avg_rank": 9.7,
-    "avg_time": 178.2,
-    "num_wins": 1,
-    "num_games": 10,
-    "mu": 17.2,
-    "sigma": 1.63,
-    "elo": 738.5999999999999
-  },
-  "Sarvesh Phoenix": {
-    "avg_ratio": 1.8937332508761082,
-    "avg_rank": 2.7142857142857144,
-    "avg_time": 37.285714285714285,
-    "num_wins": 2,
-    "num_games": 7,
-    "mu": 33.99,
-    "sigma": 1.86,
-    "elo": 1704.6000000000001
-  },
   "pianist": {
     "avg_ratio": 5.510888036342582,
     "avg_rank": 7.818181818181818,
@@ -138,16 +148,6 @@
     "mu": 21.12,
     "sigma": 1.52,
     "elo": 993.6000000000001
-  },
-  "yuann": {
-    "avg_ratio": 2.160328923939121,
-    "avg_rank": 3.5,
-    "avg_time": 52.0,
-    "num_wins": 2,
-    "num_games": 8,
-    "mu": 31.81,
-    "sigma": 1.71,
-    "elo": 1600.8
   },
   "Jake": {
     "avg_ratio": 4.791666666666667,
